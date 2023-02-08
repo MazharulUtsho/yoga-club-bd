@@ -5,11 +5,16 @@ import Card from '../Card/Card';
 import Cart from '../Cart/Cart';
 const Products = () => {
     const [carts, setCart] = useState([]);
+    const [newCarts, setNewCarts] = useState([]);
     useEffect(() => {
         fetch('data.json')
             .then(res => res.json())
             .then(data => setCart(data))
     }, [])
+    const cartHandler = (cart) => {
+        const newCart = [...newCarts, cart];
+        setNewCarts(newCart);
+    }
     return (
         <div>
             <div className="container">
@@ -22,12 +27,12 @@ const Products = () => {
                         <h2 className='title-1'>Select Yoga Exercise</h2>
                         <div className="cards-info">
                             {
-                                carts.map(cart => <Card key={cart.id} cart={cart}></Card>)
+                                carts.map(cart => <Card key={cart.id} cart={cart} cartHandler={cartHandler}></Card>)
                             }
                         </div>
                     </div>
                     <div className="col-2">
-                        <Cart></Cart>
+                        <Cart newCart={newCarts}></Cart>
                     </div>
                 </div>
             </div>

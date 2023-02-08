@@ -3,7 +3,13 @@ import './Cart.css';
 import personalImg from '../../utsho.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-const Cart = () => {
+const Cart = (props) => {
+    const newCart = props.newCart;
+    let totalTime = 0;
+    for (const product of newCart) {
+        let time = parseFloat(product.time);
+        totalTime = totalTime + time;
+    }
     return (
         <div className='full-cart'>
             <div className="cart-info-all">
@@ -42,7 +48,7 @@ const Cart = () => {
                     <h2>Yoga Total Time:</h2>
                     <div className="yoga-time">
                         <h3>Yoga Time:</h3>
-                        <p>0</p>
+                        <p>{totalTime}</p>
                     </div>
                     <div className="breaks-time">
                         <h3>Break Time:</h3>

@@ -4,6 +4,8 @@ import personalImg from '../../utsho.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { getStoredCart } from '../Utilities/Utilities';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Cart = (props) => {
     const newCart = props.newCart;
     let totalTime = 0;
@@ -24,6 +26,9 @@ const Cart = (props) => {
         storedTimeArray.push(storedTime);
         setBreakTime(storedTimeArray);
     }, [])
+    const notify = () => {
+        toast("Activity Completed!!");
+    }
     return (
         <div className='full-cart'>
             <div className="cart-info-all">
@@ -69,7 +74,8 @@ const Cart = (props) => {
                         <p>{breakTime}s</p>
                     </div>
                 </div>
-                <button className='btn-2'>Activity Completed</button>
+                <button className='btn-2' onClick={notify}>Activity Completed</button>
+                <ToastContainer></ToastContainer>
             </div>
         </div>
     );

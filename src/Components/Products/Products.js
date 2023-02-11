@@ -40,7 +40,8 @@ const Products = () => {
                         </div>
                         <div className="question-answer3">
                             <h2>Without data loading where we are using useEffect?</h2>
-                            <p></p>
+                            <p>1.Reading from local storage
+                                2.Registering and deregistering event listeners</p>
                         </div>
                     </div>
                     <div className="col-2">
